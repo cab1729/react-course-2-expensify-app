@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render expense list with empty msg 1`] = `
+<div>
+  <h1>
+    Expenses List
+  </h1>
+  <p>
+    No Expenses
+  </p>
+</div>
+`;
+
+exports[`Should render expenses list with expenses 1`] = `
+<div>
+  <h1>
+    Expenses List
+  </h1>
+  <Connect(ExpensesListItem)
+    amount={195000}
+    createdAt={0}
+    description="Weed"
+    id="1"
+    note=""
+  />
+  <Connect(ExpensesListItem)
+    amount={25000}
+    createdAt={-345600000}
+    description="Beer"
+    id="2"
+    note=""
+  />
+  <Connect(ExpensesListItem)
+    amount={35000}
+    createdAt={345600000}
+    description="Hookers"
+    id="3"
+    note=""
+  />
+</div>
+`;

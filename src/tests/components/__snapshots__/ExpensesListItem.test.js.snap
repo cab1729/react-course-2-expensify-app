@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render expenses list item with expense 1`] = `
+<BrowserRouter>
+  <div>
+    <Route
+      component={[Function]}
+      path="/edit/:id"
+    />
+    <h3>
+      <Link
+        replace={false}
+        to="/edit/1"
+      >
+        Weed
+      </Link>
+    </h3>
+    <p>
+      Amount: 
+      195000
+       Date: 
+      0
+    </p>
+    <p />
+  </div>
+</BrowserRouter>
+`;
