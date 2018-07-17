@@ -52,6 +52,7 @@
     "ignore-styles": "^5.0.1",
     "jest": "^23.1.0",
     "react-test-renderer": "^16.4.0",
+    "redux-mock-store": "^1.5.3",
     "webpack-cli": "^3.0.3",
     "webpack-dev-server": "2.5.1"
   }

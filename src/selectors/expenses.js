@@ -5,7 +5,6 @@ export default (expenses, filters) => {
     const sortBy = filters.sortBy;
     const startDate = filters.startDate;
     const endDate = filters.endDate;
-    console.log('SelectVisibleExpenses: ', expenses, text, sortBy, startDate, endDate);
     return expenses.filter((expense) => {
         const createdAtMoment = moment(expense.createdAt);
         const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
