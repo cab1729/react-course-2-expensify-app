@@ -10,7 +10,9 @@ test('Should set default state', () => {
 test('Should remove expense by id', () => {
     const action = {
         type: 'REMOVE_EXPENSE',
-        id: expenses[1].id
+        expense: {
+            id: expenses[1].id
+        }
     };
     const state = expensesReducer(expenses, action);
     expect(state).toEqual([expenses[0], expenses[2]]);
@@ -19,7 +21,9 @@ test('Should remove expense by id', () => {
 test('Should not remove expense if id not found', () => {
     const action = {
         type: 'REMOVE_EXPENSE',
-        id: '-1'
+        expense: {
+            id: '-1'
+        }
     };
     const state = expensesReducer(expenses, action);
     expect(state).toEqual(expenses);
