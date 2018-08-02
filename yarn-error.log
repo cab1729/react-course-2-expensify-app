@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add jest
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test -u
 
 PATH: 
   C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files (x86)\iis express\PHP\v7.0;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\beril\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Git\cmd;C:\HashiCorp\Vagrant\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\MinGW\bin;C:\Go\bin;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Yarn\bin\;C:\Users\beril\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\beril\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\beril\AppData\Roaming\npm\node_modules\.bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files (x86)\iis express\PHP\v7.0;C:\Program Files\Docker\Docker\Resources\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\beril\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Git\cmd;C:\HashiCorp\Vagrant\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\MinGW\bin;C:\Go\bin;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Users\beril\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\beril\AppData\Local\Programs\Python\Python36\;C:\Users\beril\AppData\Local\Microsoft\WindowsApps;C:\Users\beril\AppData\Local\atom\bin;C:\Users\beril\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Users\beril\AppData\Local\Microsoft\WindowsApps;C:\Users\beril\AppData\Local\Yarn\bin;C:\Program Files\Microsoft VS Code\bin
@@ -23,7 +23,7 @@ npm manifest:
       "build:dev": "webpack",
       "build:prod": "webpack -p --env production",
       "dev-server": "webpack-dev-server",
-      "test": "jest --config=jest.config.json",
+      "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
       "start": "node server/server.js",
       "heroku-postbuild": "yarn run build:prod"
     },
@@ -63,6 +63,8 @@ npm manifest:
     },
     "devDependencies": {
       "chalk": "^2.4.1",
+      "cross-env": "^5.2.0",
+      "dotenv": "^6.0.0",
       "enzyme": "^3.3.0",
       "enzyme-adapter-react-16": "^1.1.1",
       "enzyme-to-json": "^3.3.4",
@@ -1886,6 +1888,13 @@ Lockfile:
       safe-buffer "^5.0.1"
       sha.js "^2.4.8"
   
+  cross-env@^5.2.0:
+    version "5.2.0"
+    resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
+    dependencies:
+      cross-spawn "^6.0.5"
+      is-windows "^1.0.0"
+  
   cross-spawn@^3.0.0:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
@@ -2291,6 +2300,10 @@ Lockfile:
     dependencies:
       dom-serializer "0"
       domelementtype "1"
+  
+  dotenv@^6.0.0:
+    version "6.0.0"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.0.0.tgz#24e37c041741c5f4b25324958ebbc34bca965935"
   
   duplexer@~0.1.1:
     version "0.1.1"
@@ -3825,7 +3838,7 @@ Lockfile:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
   
-  is-windows@^1.0.2:
+  is-windows@^1.0.0, is-windows@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   
@@ -7664,26 +7677,13 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: C:\codedevprojects\react-course-projects\expensify-app\node_modules\grpc: Command failed.
-  Exit code: 6
+  Error: Command failed.
+  Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c .\node_modules\.bin\node-pre-gyp install --fallback-to-build --library=static_library
-  Directory: C:\codedevprojects\react-course-projects\expensify-app\node_modules\grpc
+  Arguments: /d /s /c cross-env NODE_ENV=test jest --config=jest.config.json -u
+  Directory: C:\codedevprojects\react-course-projects\expensify-app
   Output:
-  node-pre-gyp info it worked if it ends with ok
-  node-pre-gyp info using node-pre-gyp@0.10.0
-  node-pre-gyp info using node@8.9.4 | win32 | x64
-  node-pre-gyp info check checked for "C:\codedevprojects\react-course-projects\expensify-app\node_modules\grpc\src\node\extension_binary\node-v57-win32-x64-unknown\grpc_node.node" (not found)
-  node-pre-gyp http GET https://storage.googleapis.com/grpc-precompiled-binaries/node/grpc/v1.11.3/node-v57-win32-x64-unknown.tar.gz
-  node-pre-gyp ERR! Completion callback never invoked! 
-  node-pre-gyp ERR! System Windows_NT 10.0.16299
-  node-pre-gyp ERR! command "C:\\Program Files\\nodejs\\node.exe" "C:\\codedevprojects\\react-course-projects\\expensify-app\\node_modules\\node-pre-gyp\\bin\\node-pre-gyp" "install" "--fallback-to-build" "--library=static_library"
-  node-pre-gyp ERR! cwd C:\codedevprojects\react-course-projects\expensify-app\node_modules\grpc
-  node-pre-gyp ERR! node -v v8.9.4
-  node-pre-gyp ERR! node-pre-gyp -v v0.10.0
-  node-pre-gyp ERR! This is a bug in `node-pre-gyp`.
-  node-pre-gyp ERR! Try to update node-pre-gyp and file an issue if it does not help:
-  node-pre-gyp ERR!     <https://github.com/mapbox/node-pre-gyp/issues>
+  
       at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
       at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
       at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
