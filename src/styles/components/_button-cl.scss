@@ -1,0 +1,19 @@
+.button-cl {
+    background-color: $blue;
+    font-size: $font-size-large;
+    font-weight: 300;
+    color: white;
+    padding: $s-size;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.button-cl--link {
+    background: none;
+}
+
+.button-cl--secondary {
+    background: #888888;
+}
