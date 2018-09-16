@@ -23,7 +23,10 @@ export class EditExpensePage extends React.Component {
                                 expense={this.props.expense}
                                 onSubmit={this.onSubmit}
                             />
-                            <button className="button-cl button-cl--secondary" onClick={this.onRemove}>Remove</button>
+                            <button className="button-cl button-cl--secondary" 
+                                onClick={() => {if(confirm('Are you sure?')) {this.onRemove()};}}>
+                                    Remove
+                            </button>
                         </div>
                     </div>
                 </div>    
